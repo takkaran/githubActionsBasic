@@ -1,4 +1,4 @@
-name: ML Workflow
+name: ml-workflow
 
 on:
   push:
@@ -21,5 +21,5 @@ jobs:
     - name: Run ML script
       run: python githubActionsBasic.py > ml_results.txt
 
-    - name: Print ML results
-      run: cat ml_results.txt
+    # - name: Print ML results
+    #   run: cat ml_results.txt
