@@ -14,7 +14,10 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@latest
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.8.9'
       
     # - name: Run ML script
     #   run: python githubActionsBasic.py > ml_results.txt
