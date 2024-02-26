@@ -17,9 +17,15 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-      
-    - name: Run ML script
-      run: python githubActionsBasic.ipynb > ml_results.txt
 
-    # - name: Print ML results
-    #   run: cat ml_results.txt
+    - name: Debugging
+      run: |
+        echo "Checking out repository..."
+        python --version
+
+    - name: Run ML script
+      run: |
+        python githubActionsBasic.ipynb > ml_results.txt
+
+    - name: Print ML results
+      run: cat ml_results.txt
