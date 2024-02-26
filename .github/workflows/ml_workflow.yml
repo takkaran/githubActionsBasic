@@ -14,12 +14,19 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v2  # Updated to use the latest version
+      uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v4  # Updated to v4, which supports Node.js 20
+      with:
+        node-version: '20'
+
     - name: Install dependencies
-      run: pip install -r requirements.txt  # Modify based on your project's requirements
+      run: |
+        npm install -g your-node-package  # Update with your specific Node.js dependencies
+        pip install -r requirements.txt  # Modify based on your project's requirements
 
     - name: Run ML script
       run: python githubActionsBasic.py > ml_results.txt
@@ -35,3 +42,4 @@ jobs:
       run: |
         echo "Mean Squared Error: ${{ needs.build.outputs.mse }}"
         echo "R2 Score: ${{ needs.build.outputs.r2 }}"
+
