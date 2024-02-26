@@ -11,15 +11,13 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@latest
 
     - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      uses: actions/setup-python@latest
+      
+    # - name: Run ML script
+    #   run: python githubActionsBasic.py > ml_results.txt
 
-    - name: Run ML script
-      run: python githubActionsBasic.py > ml_results.txt
-
-    - name: Print ML results
-      run: cat ml_results.txt
+    # - name: Print ML results
+    #   run: cat ml_results.txt
