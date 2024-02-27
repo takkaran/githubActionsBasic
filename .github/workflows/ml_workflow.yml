@@ -10,13 +10,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
     - uses: yaananth/run-notebook@v2
-      env:
-        RUNNER: ${{ toJson(runner) }}
-        SECRETS: ${{ toJson(secrets) }}
-        GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "PATHTONOTEBOOK.ipynb"
-        params: "PATHTOPARAMS.json"
+        notebook: "githubActionsBasic.ipynb"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@v3
