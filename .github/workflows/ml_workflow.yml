@@ -21,7 +21,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install jupyter
-        pip install numpy  # Add any other dependencies your notebook requires
+        pip install numpy # Add any other dependencies your notebook requires
+        pip install sklearn
+        pip install matplotlib
 
     - name: Run Jupyter Notebook conversion
       run: jupyter nbconvert --to script githubActionsBasic.ipynb
