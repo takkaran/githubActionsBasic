@@ -22,7 +22,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install jupyter
-        pip install numpy as np # Add any other dependencies your notebook requires
+        pip install numpy  # Corrected - no need for an alias
         pip install scikit-learn 
         pip install matplotlib
 
