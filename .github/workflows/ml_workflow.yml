@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip install jupyter
-        pip install numpy # Add any other dependencies your notebook requires
-        pip install sklearn
+        pip install numpy as np # Add any other dependencies your notebook requires
+        pip install scikit-learn as sklearn
         pip install matplotlib
 
     - name: Run Jupyter Notebook conversion
