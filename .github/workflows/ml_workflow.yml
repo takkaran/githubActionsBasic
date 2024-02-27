@@ -25,7 +25,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npm install -g your-node-package  # Update with your specific Node.js dependencies
+        # npm install -g your-node-package  # Update with your specific Node.js dependencies
         pip install -r requirements.txt  # Modify based on your project's requirements
     - name: Run ML script
       run: python githubActionsBasic.py > ml_results.txt
