@@ -1,31 +1,28 @@
-name: ml-workflow
+name: Execute notebook
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
+    - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v3
+    - uses: yaananth/run-notebook@v2
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
       with:
-        python-version: '3.x'
-
-    - name: Debugging
-      run: |
-        echo "Checking out repository..."
-        python --version
-
-    - name: Run ML script
-      run: |
-        python githubActionsBasic.ipynb > ml_results.txt
-
-    - name: Print ML results
-      run: cat ml_results.txt
+        notebook: "PATHTONOTEBOOK.ipynb"
+        params: "PATHTOPARAMS.json"
+        isReport: False
+        poll: True
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: output
+        path: ${{ RUNNER.temp }}/nb-runner
+      env:
+        RUNNER: ${{ toJson(runner) }}
