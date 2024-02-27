@@ -16,13 +16,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
+        python-version: '3.8.9'
 
     - name: Install dependencies
       run: |
         pip install jupyter
         pip install numpy as np # Add any other dependencies your notebook requires
-        pip install scikit-learn as sklearn
+        pip install scikit-learn 
         pip install matplotlib
 
     - name: Run Jupyter Notebook conversion
