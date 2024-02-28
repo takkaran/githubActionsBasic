@@ -1,0 +1,72 @@
+name: sequential-workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
+
+    - name: Run Preprocessing
+      run: python github_actions_sequential_run.py preprocessing
+
+  model_building:
+    needs: preprocessing
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
+
+    - name: Run Model Building
+      run: python github_actions_sequential_run.py model_building
+
+  model_evaluation:
+    needs: model_building
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
+
+    - name: Run Model Evaluation
+      run: python github_actions_sequential_run.py model_evaluation
