@@ -19,7 +19,12 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy  # Corrected - no need for an alias
+        pip install scikit-learn 
+        pip install matplotlib
 
     - name: Convert notebook to script
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
