@@ -52,6 +52,9 @@ jobs:
         pip install numpy
         pip install scikit-learn
         # Add other dependencies
+        
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Model Building
       run: python github_actions_sequential_run.py model_building
@@ -76,6 +79,9 @@ jobs:
         pip install numpy
         pip install scikit-learn
         # Add other dependencies
+
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Model Evaluation
       run: python github_actions_sequential_run.py model_evaluation
