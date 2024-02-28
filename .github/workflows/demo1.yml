@@ -18,12 +18,6 @@ jobs:
      steps:
        - name: my-step
          run: echo "Hello Man!"
-  job4:
-     runs-on: ubuntu-latest
-     needs: [job1,job2,job3]
-     steps:
-       - name: my-step
-         run: echo "Hello Can!"
         
     
     
