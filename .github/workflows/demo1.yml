@@ -1,20 +1,20 @@
 name: hello-world
 on: push
 jobs:
-  job1:
+  task1:
     runs-on: ubuntu-latest
     steps:
       - name: first-step
         run: echo "Hello World!"
-  job2:
+  task2:
      runs-on: ubuntu-latest
-     needs: job1
+     needs: task1
      steps:
        - name: second-step
          run: echo "Hello Don!"
-  job3:
+  task3:
      runs-on: ubuntu-latest
-     needs: job2
+     needs: task2
      steps:
        - name: third-step
          run: echo "Hello Man!"
