@@ -6,3 +6,11 @@ jobs:
     steps:
       - name: my-step
         run: echo "Hello World!"
+      - name: my-step
+        run: echo "Hello Anna!"
+      - name: my-step
+        run: echo "Hello Karan!"
+        
+    
+    
+    
