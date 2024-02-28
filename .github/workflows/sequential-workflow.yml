@@ -19,11 +19,15 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install --upgrade pip
-           pip install jupyter
-           pip install numpy
-           pip install scikit-learn
-           # Add other dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy
+        pip install scikit-learn
+        # Add other dependencies
+
+    - name: Convert notebook to script
+      run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Preprocessing
       run: python github_actions_sequential_run.py preprocessing
@@ -42,11 +46,12 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install --upgrade pip
-           pip install jupyter
-           pip install numpy
-           pip install scikit-learn
-           # Add other dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy
+        pip install scikit-learn
+        # Add other dependencies
 
     - name: Run Model Building
       run: python github_actions_sequential_run.py model_building
@@ -65,11 +70,12 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install --upgrade pip
-           pip install jupyter
-           pip install numpy
-           pip install scikit-learn
-           # Add other dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy
+        pip install scikit-learn
+        # Add other dependencies
 
     - name: Run Model Evaluation
       run: python github_actions_sequential_run.py model_evaluation
