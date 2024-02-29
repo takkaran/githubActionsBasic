@@ -30,7 +30,10 @@ jobs:
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Preprocessing
-      run: python github_actions_sequential_run.py preprocessing
+      run: python github_actions_sequential_run.py preprocessing > output.log
+
+    - name: Print Preprocessing Output
+      run: echo "Preprocessing Output:" && cat output.log
 
   model_building:
     runs-on: ubuntu-latest
@@ -52,12 +55,15 @@ jobs:
         pip install numpy
         pip install scikit-learn
         # Add other dependencies
-        
+
     - name: Convert notebook to script
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Model Building
-      run: python github_actions_sequential_run.py model_building
+      run: python github_actions_sequential_run.py model_building > output.log
+
+    - name: Print Model Building Output
+      run: echo "Model Building Output:" && cat output.log
 
   model_evaluation:
     runs-on: ubuntu-latest
@@ -84,4 +90,7 @@ jobs:
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
     - name: Run Model Evaluation
-      run: python github_actions_sequential_run.py model_evaluation
+      run: python github_actions_sequential_run.py model_evaluation > output.log
+
+    - name: Print Model Evaluation Output
+      run: echo "Model Evaluation Output:" && cat output.log
