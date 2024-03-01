@@ -32,6 +32,12 @@ jobs:
     - name: Run Preprocessing
       run: python github_actions_sequential_run.py preprocessing > output.log
 
+    - name: Saving file
+      uses: actions/upload-artifact@v2
+      with:
+        name: numpy-array
+        path: process_array.npy
+      
     - name: Print Preprocessing Output
       run: echo "Preprocessing Output:" && cat output.log
 
@@ -59,6 +65,11 @@ jobs:
     - name: Convert notebook to script
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
+    - name: load file
+      uses: actions/download-artifact@v2
+      with:
+        name: numpy-array
+        
     - name: Run Model Building
       run: python github_actions_sequential_run.py model_building > output.log
 
