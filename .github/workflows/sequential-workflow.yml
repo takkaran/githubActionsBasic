@@ -32,12 +32,18 @@ jobs:
     - name: Run Preprocessing
       run: python github_actions_sequential_run.py preprocessing > output.log
 
-    - name: Saving file
+    - name: Saving training file
       uses: actions/upload-artifact@v2
       with:
-        name: numpy-array
-        path: process_array.npy
-      
+        name: train-array
+        path: train_array.npy
+        
+    - name: Saving testing file
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-array
+        path: test_array.npy   
+        
     - name: Print Preprocessing Output
       run: echo "Preprocessing Output:" && cat output.log
 
@@ -65,13 +71,19 @@ jobs:
     - name: Convert notebook to script
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
 
-    - name: load file
+    - name: Loading training file
       uses: actions/download-artifact@v2
       with:
-        name: numpy-array
+        name: train-array
         
     - name: Run Model Building
       run: python github_actions_sequential_run.py model_building > output.log
+      
+    - name: Saving model
+      uses: actions/upload-artifact@v2
+      with:
+        name: model-pkl 
+        path: model.pkl      
 
     - name: Print Model Building Output
       run: echo "Model Building Output:" && cat output.log
@@ -96,6 +108,16 @@ jobs:
         pip install numpy
         pip install scikit-learn
         # Add other dependencies
+
+    - name: Loading test file
+      uses: actions/download-artifact@v2
+      with:
+        name: test-array        
+
+    - name: Loading model
+      uses: actions/download-artifact@v2
+      with:
+        name: model-pkl       
 
     - name: Convert notebook to script
       run: jupyter nbconvert --to script github_actions_sequential_run.ipynb
