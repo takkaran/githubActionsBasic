@@ -14,13 +14,13 @@ jobs:
   task3:
      runs-on: ubuntu-latest
      steps:
-       - name: second-step
-         run: echo "Hello Don!"         
+       - name: third-step
+         run: echo "Hello Fam!"         
   task4:
      runs-on: ubuntu-latest
-     needs: [task2,tast3]
+     needs: [task2,task3]
      steps:
-       - name: third-step
+       - name: fourth-step
          run: echo "Hello Man!"
         
     
