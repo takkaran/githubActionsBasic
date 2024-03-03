@@ -8,11 +8,13 @@ jobs:
         run: echo "Hello World!"
   task2:
      runs-on: ubuntu-latest
+     needs: task1
      steps:
        - name: second-step
          run: echo "Hello Don!"
   task3:
      runs-on: ubuntu-latest
+     needs: task1
      steps:
        - name: third-step
          run: echo "Hello Fam!"         
