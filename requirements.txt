@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 pytest
-=======
-pytest
->>>>>>> 14b3216f068292cdeebf257809c8de1d41cdbda8
 coverage
