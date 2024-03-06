@@ -1,21 +1,26 @@
-  name: calculator
-  on:
-    schedule:
-      - cron: "*/15 * * * *"
-  jobs:
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-        - name: Set up Python
-          uses: actions/setup-python@v3
-          with:
-            python-version: 3.x
-        - name: Install dependencies
-          run: |
-            pip install -r requirements.txt
-            pip install pytest
-        - name: Run unit tests
-          run: pytest test_calculator.py
-  
+name: calculator
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Run unit tests
+      run: pytest test_calculator.py
