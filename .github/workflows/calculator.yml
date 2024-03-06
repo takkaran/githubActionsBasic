@@ -1,4 +1,4 @@
-  name: python-unit-test
+  name: calculator
   on:
     schedule:
       - cron: "*/15 * * * *"
