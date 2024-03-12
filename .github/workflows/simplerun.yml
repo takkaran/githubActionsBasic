@@ -1,0 +1,14 @@
+name: simple-run
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  task1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first-step
+        run: echo "Hello World!"
+
+
+   
