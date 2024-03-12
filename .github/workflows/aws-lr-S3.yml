@@ -1,4 +1,4 @@
-name: aws_lr_S3_workflow
+name: aws-lr-S3-workflow
 
 on:
   push:
