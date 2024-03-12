@@ -28,14 +28,13 @@ jobs:
         pip install scikit-learn 
         pip install matplotlib
 
-
     - name: Run Jupyter Notebook conversion
       run: jupyter nbconvert --to script AWS_S3_Bucket.ipynb
 
     - name: Run Python script and capture output
-       env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: python AWS_S3_Bucket.py > results.txt
 
     - name: Print ML results
