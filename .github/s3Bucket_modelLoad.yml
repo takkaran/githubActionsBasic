@@ -1,0 +1,40 @@
+name: ml-workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy
+        pip install boto3
+        pip install pandas
+        pip install scikit-learn 
+        pip install matplotlib
+        pip install joblib
+
+
+    - name: Run Jupyter Notebook conversion
+      run: jupyter nbconvert --to script AWS_S3_Bucket.ipynb
+
+    - name: Run Python script and capture output
+      run: python AWS_S3_Bucket.py > results.txt
+
+    - name: Print ML results
+      run: cat results.txt
