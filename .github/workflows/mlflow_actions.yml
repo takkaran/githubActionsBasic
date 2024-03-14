@@ -33,6 +33,7 @@ jobs:
 
     - name: Run Python script and capture output
       env:
+        MLFLOW_TRACKING_URI: http://your-mlflow-server-address:5000
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: python Salary.py > results.txt
