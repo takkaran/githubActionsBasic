@@ -28,9 +28,15 @@ jobs:
         pip install matplotlib
         pip install setuptools
 
-    - name: Run Python script
+    - name: Run Jupyter Notebook conversion
+      run: jupyter nbconvert --to script Salary.ipynb
+
+    - name: Run Python script and Capture Output
       env:
         MLFLOW_TRACKING_URI: http://127.0.0.1:5000
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: python Salary.py
+      run: python Salary.py > results.txt
+    
+    - name: Print ML results
+      run: cat results.txt
