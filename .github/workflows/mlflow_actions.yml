@@ -26,6 +26,7 @@ jobs:
         pip install pandas
         pip install scikit-learn 
         pip install matplotlib
+        pip install setuptools
 
     - name: Run Jupyter Notebook conversion
       run: jupyter nbconvert --to script Salary.ipynb
@@ -34,4 +35,7 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: python Salary.py
+      run: python Salary.py > results.txt
+
+    - name: Print ML results
+      run: cat results.txt
