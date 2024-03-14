@@ -20,23 +20,12 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install mlflow
-        pip install jupyter
-        pip install numpy
-        pip install boto3
         pip install pandas
         pip install scikit-learn 
-        pip install matplotlib
-        pip install setuptools
 
-    - name: Run Jupyter Notebook conversion
-      run: jupyter nbconvert --to script Salary.ipynb
-
-    - name: Run Python script and capture output
+    - name: Run Python script
       env:
-        MLFLOW_TRACKING_URI: http://your-mlflow-server-address:5000
+        MLFLOW_TRACKING_URI: http://127.0.0.1:5000
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: python Salary.py > results.txt
-
-    - name: Print ML results
-      run: cat results.txt
+      run: python Salary.py
