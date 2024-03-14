@@ -1,0 +1,40 @@
+name: mlflow_actions_workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install mlflow
+        pip install jupyter
+        pip install numpy
+        pip install boto3
+        pip install pandas
+        pip install scikit-learn 
+        pip install matplotlib
+
+    - name: Run Jupyter Notebook conversion
+      run: jupyter nbconvert --to script Salary.ipynb
+
+    - name: Run Python script and capture output
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: python Salary.py > results.txt
+
+    - name: Print ML results
+      run: cat results.txt
