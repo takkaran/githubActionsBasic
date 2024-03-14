@@ -20,8 +20,13 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install mlflow
+        pip install jupyter
+        pip install numpy
+        pip install boto3
         pip install pandas
         pip install scikit-learn 
+        pip install matplotlib
+        pip install setuptools
 
     - name: Run Python script
       env:
