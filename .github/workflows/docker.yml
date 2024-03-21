@@ -1,4 +1,4 @@
-name: docke
+name: docker_file
 
 on:
   push:
