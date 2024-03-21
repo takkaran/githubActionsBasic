@@ -26,7 +26,7 @@ jobs:
       run: jupyter nbconvert --to script docker.ipynb
 
     - name: Run Python script and capture output
-      run: python docker.py > ml_results.txt
+      run: python docker.py > result.txt
 
     - name: Print ML results
-      run: cat ml_results.txt
+      run: cat result.txt
