@@ -1,4 +1,4 @@
-name: docker_file
+name: docker
 
 on:
   push:
@@ -21,6 +21,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+
+    - name: Change directory to notebook location
+      run: cd path/to/notebook/directory
 
     - name: Run Jupyter Notebook conversion
       run: jupyter nbconvert --to script docker.ipynb
