@@ -1,1 +1,36 @@
+name: docker
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter
+        pip install numpy 
+        pip install scikit-learn 
+        pip install matplotlib
+
+    - name: Run Jupyter Notebook conversion
+      run: jupyter nbconvert --to script docker.ipynb
+
+    - name: Run Python script and capture output
+      run: python docker.py > ml_results.txt
+
+    - name: Print ML results
+      run: cat ml_results.txt
