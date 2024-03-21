@@ -1,2 +1,6 @@
 pytest
 coverage
+scikit-learn
+matplotlib
+numpy
+jupyter
