@@ -1,4 +1,4 @@
-name: docker_yml
+name: docker
 
 on:
   push:
