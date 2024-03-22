@@ -3,9 +3,7 @@
 name: Push to Docker Hub
 
 on:
-  push:
-    branches:
-      - main  # Adjust this according to your branch name
+  workflow_dispatch:
 
 jobs:
   build:

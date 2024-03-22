@@ -1,9 +1,7 @@
 name: sequential-workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   preprocessing:
