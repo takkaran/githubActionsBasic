@@ -1,9 +1,7 @@
 name: ml-workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
