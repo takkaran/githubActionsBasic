@@ -1,6 +1,6 @@
 # .github/workflows/push-to-docker.yml
 
-name: Docker hub
+name: docker
 
 on:
   workflow_dispatch:
